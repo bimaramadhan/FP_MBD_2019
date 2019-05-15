@@ -1,5 +1,5 @@
 
-<form action="insert printer.php" method="post">
+<form action="insert pemesan.php" method="post">
 filter<br>
 id: <input type=text name=id><br>
 nama: <input type=text name=nama><br>
