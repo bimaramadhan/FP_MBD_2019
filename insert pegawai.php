@@ -1,5 +1,5 @@
 
-<form action="insert.php" method="post">
+<form action="insert pegawai.php" method="post">
 filter<br>
 id: <input type=text name=id><br>
 nama: <input type=text name=nama><br>
