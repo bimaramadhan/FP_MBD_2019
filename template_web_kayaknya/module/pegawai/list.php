@@ -7,10 +7,10 @@
 
 <?php 
 
-    $query = mysqli_query($koneksi,"SELECT * from pemesan");
+    $query = mysqli_query($koneksi,"SELECT * from pegawai");
 
     if(mysqli_num_rows($query) == 0){
-        echo "<h4>Maaf, tidak ada apapun dalam tabel kertas</h4>";
+        echo "<h4>Maaf, tidak ada apapun dalam tabel pegawai</h4>";
     }
     else{
 
@@ -23,6 +23,7 @@
                 <th class='kiri'>tgl lahir</th>
                 <th class='kiri'>alamat</th>
 				<th class='kiri'>no telp</th>
+				<th class='kiri'>jabatan</th>
                 <th class='tengah'>Tindakan</th>
             </tr>";
 
@@ -31,13 +32,13 @@
 
                 echo "<tr>
                     <td class='kolom-nomor'>$no</td>
-                    <td class='kiri'>$row[pm_id]</td>
-                    <td class='kiri'>$row[pm_nama]</td>
-                    <td class='kiri'>$row[pm_tgl_lahir]</td>
-                    <td class='tengah'>$row[pm_alamat]</td>
-					<td class='tengah'>$row[pm_notelp]</td>
+                    <td class='kiri'>$row[pg_id]</td>
+                    <td class='kiri'>$row[pg_nama]</td>
+                    <td class='kiri'>$row[pg_tgl_lahir]</td>
+                    <td class='tengah'>$row[pg_alamat]</td>
+					<td class='tengah'>$row[pg_notelp]</td>
                     <td class='tengah'>
-                        <a class=tombol-action href='".BASE_URL."index.php?page=my_profile&module=kertas&action=form&barang_id=$row[pm_id]'>Ganti</a>
+                        <a class=tombol-action href='".BASE_URL."index.php?page=my_profile&module=kertas&action=form&barang_id=$row[pg_id]'>Ganti</a>
                     </td>
                 
                 </tr>";
