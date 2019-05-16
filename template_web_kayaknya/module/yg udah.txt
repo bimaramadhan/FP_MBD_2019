@@ -1,0 +1,13 @@
+			list	form	action
+barang			|>	|>	|
+transaksi		|	|	|
+detil_transaksi		|	|	|
+status			|	|	|
+printer			|	|	|
+pemesan			|	|	|
+pegawai			|	|	|
+ind_jihad		|	|	|
+ind_david		|	|	|
+ind_bima		|	|	|
+
+> = udah
