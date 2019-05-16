@@ -148,7 +148,7 @@ ADD KEY pt_id (`pt_id`);
 --
 ALTER TABLE detil_transaksi
 ADD CONSTRAINT detil_transaksi_ibfk_1 FOREIGN KEY (`t_id`) REFERENCES transaksi (`t_id`),
-ADD CONSTRAINT detil_transaksi_ibfk_2 FOREIGN KEY (`k_id`) REFERENCES barang (`k_id`);
+ADD CONSTRAINT detil_transaksi_ibfk_2 FOREIGN KEY (`k_id`) REFERENCES kertas (`k_id`);
 
 --
 -- Constraints for table status_pengiriman
