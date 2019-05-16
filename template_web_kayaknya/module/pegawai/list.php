@@ -38,7 +38,7 @@
                     <td class='tengah'>$row[pg_alamat]</td>
 					<td class='tengah'>$row[pg_notelp]</td>
                     <td class='tengah'>
-                        <a class=tombol-action href='".BASE_URL."index.php?page=my_profile&module=kertas&action=form&barang_id=$row[pg_id]'>Ganti</a>
+                        <a class=tombol-action href='".BASE_URL."index.php?page=my_profile&module=kertas&action=form&barang_id='$row[pg_id]'>Ganti</a>
                     </td>
                 
                 </tr>";
