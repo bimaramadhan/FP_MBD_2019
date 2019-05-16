@@ -1,14 +1,14 @@
 <?php
     
-    $barang_id = isset($_GET['barang_id']) ? $_GET['barang_id'] : false;
+    $status_id = isset($_GET['status_id']) ? $_GET['status_id'] : false;
     
-    $barang_jenis = "";
-    $barang_harga = "";
-    $barang_keterangan = "";
-
+    $status_tid = "";
+    $status_status = "";
+    $status_alamat = "";
+    
     /*
     $kategori_id = "";
-    $nama_barang = "";
+    $nama_status = "";
     $spesifikasi = "";
 
     $keterangan_gambar = "";
@@ -21,20 +21,20 @@
 
     $button = "Add";
     
-    if($barang_id){
-        $query = mysqli_query($koneksi," SELECT * FROM kertas WHERE k_id like '$barang_id' ");
+    if($status_id){
+        $query = mysqli_query($koneksi," SELECT * FROM status_pengiriman WHERE sp_id like '$status_id' ");
         //sidenote = kalo pake WHERE X = 'nama' gabisa, mesti WHERE X like 'nama'
 
         $row = mysqli_fetch_assoc($query);
 
-        $barang_id = $row['k_id'];
-        $barang_jenis = $row['k_jenis'];
-        $barang_harga = $row['k_harga'];
-        $barang_keterangan = $row['k_ukuran'];
+        $status_id = $row['sp_id'];
+        $status_tid = $row['t_id'];
+        $status_status = $row['sp_status'];
+        $status_alamat = $row['sp_alamat'];
         
-        //echo $barang_id;
+        //echo $status_id;
         /*
-        $nama_barang = $row['nama_barang'];
+        $nama_status = $row['nama_status'];
         $kategori_id = $row['kategori_id'];
         $spesifikasi = $row['spesifikasi'];
         $gambar = $row['gambar'];
@@ -48,7 +48,7 @@
         
 
         //$keterangan_gambar = "( Klik pilih gambar jika ingin ganti gambar umu )";
-        /*      $gambar = "<img src='".BASE_URL."images/barang/$gambar' 
+        /*      $gambar = "<img src='".BASE_URL."images/status/$gambar' 
         style='width: 200px;vertical-align: middle;' />";               */
     }
     
@@ -57,7 +57,7 @@
 
 <script src="<?php echo BASE_URL."javascript/ckeditor/ckeditor.js"; ?>" ></script>
 
-<form action="<?php echo BASE_URL."module/kertas/action.php?barang_id=$barang_id"; ?>" method="POST" enctype="multipart/form-data">
+<form action="<?php echo BASE_URL."module/status/action.php?status_id=$status_id"; ?>" method="POST" enctype="multipart/form-data">
 
 <!--
 
@@ -92,13 +92,18 @@
                     -->
 
     <div class="element-form">
-            <label>ID Kertas</label>
-            <span><input type="text" name="k_id" value="<?php echo $barang_id ?>" /></span>
+            <label>ID Status</label>
+            <span><input type="text" name="sp_id" value="<?php echo $status_id ?>" /></span>
     </div>
 
     <div class="element-form">
-            <label>Jenis Kertas</label>
-            <span><input type="text" name="k_jenis" value="<?php echo $barang_jenis ?>" /></span>
+            <label>ID Transaksi</label>
+            <span><input type="text" name="t_id" value="<?php echo $status_tid ?>" /></span>
+    </div>
+
+    <div class="element-form">
+            <label>Status</label>
+            <span><input type="text" name="sp_status" value="<?php echo $status_status ?>" /></span>
     </div>
 
     <!--
@@ -109,14 +114,10 @@
     -->
 
     <div class="element-form">
-            <label>Harga</label>
-            <span><input type="text" name="k_harga" value="<?php echo $barang_harga ?>" /></span>
+            <label>Alamat</label>
+            <span><input type="text" name="sp_alamat" value="<?php echo $status_alamat ?>" /></span>
     </div>
 
-    <div class="element-form">
-            <label>Ukuran</label>
-            <span><input type="text" name="k_ukuran" value="<?php echo $barang_keterangan ?>" /></span>
-    </div>
     
     <!--
     <div class="element-form">

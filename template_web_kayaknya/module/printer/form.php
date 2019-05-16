@@ -1,14 +1,13 @@
 <?php
     
-    $barang_id = isset($_GET['barang_id']) ? $_GET['barang_id'] : false;
+    $printer_id = isset($_GET['printer_id']) ? $_GET['printer_id'] : false;
     
-    $barang_jenis = "";
-    $barang_harga = "";
-    $barang_keterangan = "";
-
+    $printer_nama = "";
+    $printer_status = "";
+    
     /*
     $kategori_id = "";
-    $nama_barang = "";
+    $nama_printer = "";
     $spesifikasi = "";
 
     $keterangan_gambar = "";
@@ -21,20 +20,19 @@
 
     $button = "Add";
     
-    if($barang_id){
-        $query = mysqli_query($koneksi," SELECT * FROM kertas WHERE k_id like '$barang_id' ");
+    if($printer_id){
+        $query = mysqli_query($koneksi," SELECT * FROM printer WHERE pt_id like '$printer_id' ");
         //sidenote = kalo pake WHERE X = 'nama' gabisa, mesti WHERE X like 'nama'
 
         $row = mysqli_fetch_assoc($query);
 
-        $barang_id = $row['k_id'];
-        $barang_jenis = $row['k_jenis'];
-        $barang_harga = $row['k_harga'];
-        $barang_keterangan = $row['k_ukuran'];
+        $printer_id = $row['pt_id'];
+        $printer_nama = $row['pt_nama'];
+        $printer_status = $row['pt_status'];
         
-        //echo $barang_id;
+        //echo $printer_id;
         /*
-        $nama_barang = $row['nama_barang'];
+        $nama_printer = $row['nama_printer'];
         $kategori_id = $row['kategori_id'];
         $spesifikasi = $row['spesifikasi'];
         $gambar = $row['gambar'];
@@ -48,7 +46,7 @@
         
 
         //$keterangan_gambar = "( Klik pilih gambar jika ingin ganti gambar umu )";
-        /*      $gambar = "<img src='".BASE_URL."images/barang/$gambar' 
+        /*      $gambar = "<img src='".BASE_URL."images/printer/$gambar' 
         style='width: 200px;vertical-align: middle;' />";               */
     }
     
@@ -57,7 +55,7 @@
 
 <script src="<?php echo BASE_URL."javascript/ckeditor/ckeditor.js"; ?>" ></script>
 
-<form action="<?php echo BASE_URL."module/kertas/action.php?barang_id=$barang_id"; ?>" method="POST" enctype="multipart/form-data">
+<form action="<?php echo BASE_URL."module/printer/action.php?printer_id=$printer_id"; ?>" method="POST" enctype="multipart/form-data">
 
 <!--
 
@@ -92,13 +90,18 @@
                     -->
 
     <div class="element-form">
-            <label>ID Kertas</label>
-            <span><input type="text" name="k_id" value="<?php echo $barang_id ?>" /></span>
+            <label>ID Printer</label>
+            <span><input type="text" name="pt_id" value="<?php echo $printer_id ?>" /></span>
     </div>
 
     <div class="element-form">
-            <label>Jenis Kertas</label>
-            <span><input type="text" name="k_jenis" value="<?php echo $barang_jenis ?>" /></span>
+            <label>Nama Printer</label>
+            <span><input type="text" name="pt_nama" value="<?php echo $printer_nama ?>" /></span>
+    </div>
+
+    <div class="element-form">
+            <label>Status</label>
+            <span><input type="text" name="pt_status" value="<?php echo $printer_status ?>" /></span>
     </div>
 
     <!--
@@ -108,15 +111,6 @@
     </div>
     -->
 
-    <div class="element-form">
-            <label>Harga</label>
-            <span><input type="text" name="k_harga" value="<?php echo $barang_harga ?>" /></span>
-    </div>
-
-    <div class="element-form">
-            <label>Ukuran</label>
-            <span><input type="text" name="k_ukuran" value="<?php echo $barang_keterangan ?>" /></span>
-    </div>
     
     <!--
     <div class="element-form">

@@ -1,14 +1,13 @@
 <?php
     
-    $barang_id = isset($_GET['barang_id']) ? $_GET['barang_id'] : false;
+    $detil_transaksi_kid = isset($_GET['detil_transaksi_kid']) ? $_GET['detil_transaksi_kid'] : false;
     
-    $barang_jenis = "";
-    $barang_harga = "";
-    $barang_keterangan = "";
-
+    $detil_transaksi_tid = "";
+    $detil_transaksi_jumlah = "";
+    
     /*
     $kategori_id = "";
-    $nama_barang = "";
+    $nama_detil_transaksi = "";
     $spesifikasi = "";
 
     $keterangan_gambar = "";
@@ -21,20 +20,19 @@
 
     $button = "Add";
     
-    if($barang_id){
-        $query = mysqli_query($koneksi," SELECT * FROM kertas WHERE k_id like '$barang_id' ");
+    if($detil_transaksi_kid){
+        $query = mysqli_query($koneksi," SELECT * FROM detil_transaksi WHERE k_id like '$detil_transaksi_kid' ");
         //sidenote = kalo pake WHERE X = 'nama' gabisa, mesti WHERE X like 'nama'
 
         $row = mysqli_fetch_assoc($query);
 
-        $barang_id = $row['k_id'];
-        $barang_jenis = $row['k_jenis'];
-        $barang_harga = $row['k_harga'];
-        $barang_keterangan = $row['k_ukuran'];
+        $detil_transaksi_kid = $row['k_id'];
+        $detil_transaksi_tid = $row['t_id'];
+        $detil_transaksi_jumlah = $row['dt_jumlah'];
         
-        //echo $barang_id;
+        //echo $detil_transaksi_kid;
         /*
-        $nama_barang = $row['nama_barang'];
+        $nama_detil_transaksi = $row['nama_detil_transaksi'];
         $kategori_id = $row['kategori_id'];
         $spesifikasi = $row['spesifikasi'];
         $gambar = $row['gambar'];
@@ -48,7 +46,7 @@
         
 
         //$keterangan_gambar = "( Klik pilih gambar jika ingin ganti gambar umu )";
-        /*      $gambar = "<img src='".BASE_URL."images/barang/$gambar' 
+        /*      $gambar = "<img src='".BASE_URL."images/detil_transaksi/$gambar' 
         style='width: 200px;vertical-align: middle;' />";               */
     }
     
@@ -57,7 +55,7 @@
 
 <script src="<?php echo BASE_URL."javascript/ckeditor/ckeditor.js"; ?>" ></script>
 
-<form action="<?php echo BASE_URL."module/kertas/action.php?barang_id=$barang_id"; ?>" method="POST" enctype="multipart/form-data">
+<form action="<?php echo BASE_URL."module/detil_transaksi/action.php?detil_transaksi_kid=$detil_transaksi_kid"; ?>" method="POST" enctype="multipart/form-data">
 
 <!--
 
@@ -93,12 +91,17 @@
 
     <div class="element-form">
             <label>ID Kertas</label>
-            <span><input type="text" name="k_id" value="<?php echo $barang_id ?>" /></span>
+            <span><input type="text" name="k_id" value="<?php echo $detil_transaksi_kid ?>" /></span>
     </div>
 
     <div class="element-form">
-            <label>Jenis Kertas</label>
-            <span><input type="text" name="k_jenis" value="<?php echo $barang_jenis ?>" /></span>
+            <label>ID Transaksi</label>
+            <span><input type="text" name="t_id" value="<?php echo $detil_transaksi_tid ?>" /></span>
+    </div>
+
+    <div class="element-form">
+            <label>Jumlah</label>
+            <span><input type="text" name="dt_jumlah" value="<?php echo $detil_transaksi_jumlah ?>" /></span>
     </div>
 
     <!--
@@ -108,15 +111,6 @@
     </div>
     -->
 
-    <div class="element-form">
-            <label>Harga</label>
-            <span><input type="text" name="k_harga" value="<?php echo $barang_harga ?>" /></span>
-    </div>
-
-    <div class="element-form">
-            <label>Ukuran</label>
-            <span><input type="text" name="k_ukuran" value="<?php echo $barang_keterangan ?>" /></span>
-    </div>
     
     <!--
     <div class="element-form">

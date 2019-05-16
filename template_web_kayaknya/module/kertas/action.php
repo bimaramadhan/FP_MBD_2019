@@ -9,16 +9,16 @@
 
     include_once("../../function/connection.php");
     include_once("../../function/helper.php");
-    
+
     $query = mysqli_query($koneksi," SELECT * FROM kertas WHERE k_id = '$barang_id' ");
     $row = mysqli_fetch_assoc($query);
 
-    $barang_id_old = $row['k_id'];
+    // $barang_id_old = $row['k_id'];
 
-    $barang_id = $_POST['b_id'];
-    $barang_jenis = $_POST['b_jenis'];
-    $barang_harga = $_POST['b_harga'];
-    $barang_keterangan = $_POST['b_keterangan'];
+    $barang_id = $_POST['k_id'];
+    $barang_jenis = $_POST['k_jenis'];
+    $barang_harga = $_POST['k_harga'];
+    $barang_keterangan = $_POST['k_ukuran'];
     
     $button = $_POST['button'];
 

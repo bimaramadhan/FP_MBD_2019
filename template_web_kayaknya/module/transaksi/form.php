@@ -1,14 +1,19 @@
 <?php
     
-    $barang_id = isset($_GET['barang_id']) ? $_GET['barang_id'] : false;
+    $transaksi_id = isset($_GET['transaksi_id']) ? $_GET['transaksi_id'] : false;
     
-    $barang_jenis = "";
-    $barang_harga = "";
-    $barang_keterangan = "";
-
+    $transaksi_spid = "";
+    $transaksi_pgid = "";
+    $transaksi_pmid = "";
+    $transaksi_ptid = "";
+    $transaksi_tglmasuk = "";
+    $transaksi_tgljadi = "";
+    $transaksi_tglambil = "";
+    $transaksi_totalharga = "";
+    
     /*
     $kategori_id = "";
-    $nama_barang = "";
+    $nama_transaksi = "";
     $spesifikasi = "";
 
     $keterangan_gambar = "";
@@ -21,20 +26,25 @@
 
     $button = "Add";
     
-    if($barang_id){
-        $query = mysqli_query($koneksi," SELECT * FROM kertas WHERE k_id like '$barang_id' ");
+    if($transaksi_id){
+        $query = mysqli_query($koneksi," SELECT * FROM transaksi WHERE t_id like '$transaksi_id' ");
         //sidenote = kalo pake WHERE X = 'nama' gabisa, mesti WHERE X like 'nama'
 
         $row = mysqli_fetch_assoc($query);
 
-        $barang_id = $row['k_id'];
-        $barang_jenis = $row['k_jenis'];
-        $barang_harga = $row['k_harga'];
-        $barang_keterangan = $row['k_ukuran'];
+        $transaksi_id = $row['t_id'];
+        $transaksi_spid = $row['sp_id'];
+        $transaksi_pgid = $row['pg_id'];
+        $transaksi_pmid = $row['pm_id'];
+        $transaksi_ptid = $row['pt_id'];
+        $transaksi_tglmasuk = $row['t_tgl_masuk'];
+        $transaksi_tgljadi = $row['t_tgl_jadi'];
+        $transaksi_tglambil = $row['t_tgl_ambil'];
+        $transaksi_totalharga = $row['t_total_harga'];
         
-        //echo $barang_id;
+        //echo $transaksi_id;
         /*
-        $nama_barang = $row['nama_barang'];
+        $nama_transaksi = $row['nama_transaksi'];
         $kategori_id = $row['kategori_id'];
         $spesifikasi = $row['spesifikasi'];
         $gambar = $row['gambar'];
@@ -48,7 +58,7 @@
         
 
         //$keterangan_gambar = "( Klik pilih gambar jika ingin ganti gambar umu )";
-        /*      $gambar = "<img src='".BASE_URL."images/barang/$gambar' 
+        /*      $gambar = "<img src='".BASE_URL."images/transaksi/$gambar' 
         style='width: 200px;vertical-align: middle;' />";               */
     }
     
@@ -57,7 +67,7 @@
 
 <script src="<?php echo BASE_URL."javascript/ckeditor/ckeditor.js"; ?>" ></script>
 
-<form action="<?php echo BASE_URL."module/kertas/action.php?barang_id=$barang_id"; ?>" method="POST" enctype="multipart/form-data">
+<form action="<?php echo BASE_URL."module/transaksi/action.php?transaksi_id=$transaksi_id"; ?>" method="POST" enctype="multipart/form-data">
 
 <!--
 
@@ -92,13 +102,28 @@
                     -->
 
     <div class="element-form">
-            <label>ID Kertas</label>
-            <span><input type="text" name="k_id" value="<?php echo $barang_id ?>" /></span>
+            <label>ID Transaksi</label>
+            <span><input type="text" name="t_id" value="<?php echo $transaksi_id ?>" /></span>
     </div>
 
     <div class="element-form">
-            <label>Jenis Kertas</label>
-            <span><input type="text" name="k_jenis" value="<?php echo $barang_jenis ?>" /></span>
+            <label>ID Status Pengiriman</label>
+            <span><input type="text" name="sp_id" value="<?php echo $transaksi_spid ?>" /></span>
+    </div>
+
+    <div class="element-form">
+            <label>ID Pegawai</label>
+            <span><input type="text" name="pg_id" value="<?php echo $transaksi_pgid ?>" /></span>
+    </div>
+
+    <div class="element-form">
+            <label>ID Pemesan</label>
+            <span><input type="text" name="pm_id" value="<?php echo $transaksi_pmid ?>" /></span>
+    </div>
+
+    <div class="element-form">
+            <label>ID Printer</label>
+            <span><input type="text" name="pt_id" value="<?php echo $transaksi_ptid ?>" /></span>
     </div>
 
     <!--
@@ -109,13 +134,23 @@
     -->
 
     <div class="element-form">
-            <label>Harga</label>
-            <span><input type="text" name="k_harga" value="<?php echo $barang_harga ?>" /></span>
+            <label>Tanggal Masuk</label>
+            <span><input type="text" name="t_tgl_masuk" value="<?php echo $transaksi_tglmasuk ?>" /></span>
     </div>
 
     <div class="element-form">
-            <label>Ukuran</label>
-            <span><input type="text" name="k_ukuran" value="<?php echo $barang_keterangan ?>" /></span>
+            <label>Tanggal Jadi</label>
+            <span><input type="text" name="t_tgl_jadi" value="<?php echo $transaksi_tgljadi ?>" /></span>
+    </div>
+
+    <div class="element-form">
+            <label>Tanggal Ambil</label>
+            <span><input type="text" name="t_tgl_ambil" value="<?php echo $transaksi_tglambil ?>" /></span>
+    </div>
+
+    <div class="element-form">
+            <label>Total Harga</label>
+            <span><input type="text" name="t_total_harga" value="<?php echo $transaksi_totalharga ?>" /></span>
     </div>
     
     <!--

@@ -1,14 +1,15 @@
 <?php
     
-    $barang_id = isset($_GET['barang_id']) ? $_GET['barang_id'] : false;
+    $pemesan_id = isset($_GET['pemesan_id']) ? $_GET['pemesan_id'] : false;
     
-    $barang_jenis = "";
-    $barang_harga = "";
-    $barang_keterangan = "";
-
+    $pemesan_nama = "";
+    $pemesan_tgllahir = "";
+    $pemesan_alamat = "";
+    $pemesan_notelp = "";
+    
     /*
     $kategori_id = "";
-    $nama_barang = "";
+    $nama_pemesan = "";
     $spesifikasi = "";
 
     $keterangan_gambar = "";
@@ -21,21 +22,21 @@
 
     $button = "Add";
     
-    if($barang_id){
-        $query = mysqli_query($koneksi," SELECT * FROM kertas WHERE k_id = '$barang_id' ");
+    if($pemesan_id){
+        $query = mysqli_query($koneksi," SELECT * FROM pemesan WHERE pm_id like '$pemesan_id' ");
         //sidenote = kalo pake WHERE X = 'nama' gabisa, mesti WHERE X like 'nama'
 
         $row = mysqli_fetch_assoc($query);
 
-        $p_id=$row["pm_id"];
-		$pnama=$row["pm_nama"];
-		$ptgl=$row["pm_tgl_lahir"];
-		$palamat=$row["pm_alamat"];
-		$ptelp=$row["pm_notelp"];
+        $pemesan_id = $row['pm_id'];
+        $pemesan_nama = $row['pm_nama'];
+        $pemesan_tgllahir = $row['pm_tgl_lahir'];
+        $pemesan_alamat = $row['pm_alamat'];
+        $pemesan_notelp = $row['pm_notelp'];
         
-        //echo $barang_id;
+        //echo $pemesan_id;
         /*
-        $nama_barang = $row['nama_barang'];
+        $nama_pemesan = $row['nama_pemesan'];
         $kategori_id = $row['kategori_id'];
         $spesifikasi = $row['spesifikasi'];
         $gambar = $row['gambar'];
@@ -49,7 +50,7 @@
         
 
         //$keterangan_gambar = "( Klik pilih gambar jika ingin ganti gambar umu )";
-        /*      $gambar = "<img src='".BASE_URL."images/barang/$gambar' 
+        /*      $gambar = "<img src='".BASE_URL."images/pemesan/$gambar' 
         style='width: 200px;vertical-align: middle;' />";               */
     }
     
@@ -58,7 +59,7 @@
 
 <script src="<?php echo BASE_URL."javascript/ckeditor/ckeditor.js"; ?>" ></script>
 
-<form action="<?php echo BASE_URL."module/kertas/action.php?barang_id=$barang_id"; ?>" method="POST" enctype="multipart/form-data">
+<form action="<?php echo BASE_URL."module/pemesan/action.php?pemesan_id=$pemesan_id"; ?>" method="POST" enctype="multipart/form-data">
 
 <!--
 
@@ -94,12 +95,17 @@
 
     <div class="element-form">
             <label>ID Pemesan</label>
-            <span><input type="text" name="pm_id" value="<?php echo $p_id ?>" /></span>
+            <span><input type="text" name="pm_id" value="<?php echo $pemesan_id ?>" /></span>
     </div>
 
     <div class="element-form">
-            <label>Nama</label>
-            <span><input type="text" name="pm_nama" value="<?php echo $pnama?>" /></span>
+            <label>Nama Pemesan</label>
+            <span><input type="text" name="pm_nama" value="<?php echo $pemesan_nama ?>" /></span>
+    </div>
+
+    <div class="element-form">
+            <label>Tanggal Lahir</label>
+            <span><input type="text" name="pm_tgl_lahir" value="<?php echo $pemesan_tgllahir ?>" /></span>
     </div>
 
     <!--
@@ -110,17 +116,13 @@
     -->
 
     <div class="element-form">
-            <label>tanggal lahir</label>
-            <span><input type="text" name="pm_tgl_lahir" value="<?php echo $ptgl ?>" /></span>
+            <label>Alamat</label>
+            <span><input type="text" name="pm_alamat" value="<?php echo $pemesan_alamat ?>" /></span>
     </div>
 
     <div class="element-form">
-            <label>alamat</label>
-            <span><input type="text" name="pm_alamat" value="<?php echo $palamat ?>" /></span>
-    </div>
-	<div class="element-form">
-            <label>no telepon</label>
-            <span><input type="text" name="pm_notelp" value="<?php echo $ptelp ?>" /></span>
+            <label>No Telepon</label>
+            <span><input type="text" name="pm_notelp" value="<?php echo $pemesan_notelp ?>" /></span>
     </div>
     
     <!--

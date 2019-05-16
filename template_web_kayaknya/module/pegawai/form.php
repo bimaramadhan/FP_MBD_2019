@@ -1,14 +1,16 @@
 <?php
     
-    $barang_id = isset($_GET['barang_id']) ? $_GET['barang_id'] : false;
+    $pegawai_id = isset($_GET['pegawai_id']) ? $_GET['pegawai_id'] : false;
     
-    $barang_jenis = "";
-    $barang_harga = "";
-    $barang_keterangan = "";
+    $pegawai_nama = "";
+    $pegawai_tgllahir = "";
+    $pegawai_alamat = "";
+    $pegawai_notelp = "";
+    $pegawai_bagian = "";
 
     /*
     $kategori_id = "";
-    $nama_barang = "";
+    $nama_pegawai = "";
     $spesifikasi = "";
 
     $keterangan_gambar = "";
@@ -21,21 +23,22 @@
 
     $button = "Add";
     
-    if($barang_id){
-        $query = mysqli_query($koneksi," SELECT * FROM kertas WHERE k_id = '$barang_id' ");
+    if($pegawai_id){
+        $query = mysqli_query($koneksi," SELECT * FROM pegawai WHERE pg_id like '$pegawai_id' ");
         //sidenote = kalo pake WHERE X = 'nama' gabisa, mesti WHERE X like 'nama'
 
         $row = mysqli_fetch_assoc($query);
 
-        $p_id=$row["pg_id"];
-		$pnama=$row["pg_nama"];
-		$ptgl=$row["pg_tgl_lahir"];
-		$palamat=$row["pg_alamat"];
-		$ptelp=$row["pg_notelp"];
-        $pjab=$row["pg_jabatan"];
-        //echo $barang_id;
+        $pegawai_id = $row['pg_id'];
+        $pegawai_nama = $row['pg_nama'];
+        $pegawai_tgllahir = $row['pg_tgl_lahir'];
+        $pegawai_alamat = $row['pg_alamat'];
+        $pegawai_notelp = $row['pg_notelp'];
+        $pegawai_bagian = $row['pg_bagian'];
+        
+        //echo $pegawai_id;
         /*
-        $nama_barang = $row['nama_barang'];
+        $nama_pegawai = $row['nama_pegawai'];
         $kategori_id = $row['kategori_id'];
         $spesifikasi = $row['spesifikasi'];
         $gambar = $row['gambar'];
@@ -49,7 +52,7 @@
         
 
         //$keterangan_gambar = "( Klik pilih gambar jika ingin ganti gambar umu )";
-        /*      $gambar = "<img src='".BASE_URL."images/barang/$gambar' 
+        /*      $gambar = "<img src='".BASE_URL."images/pegawai/$gambar' 
         style='width: 200px;vertical-align: middle;' />";               */
     }
     
@@ -58,7 +61,7 @@
 
 <script src="<?php echo BASE_URL."javascript/ckeditor/ckeditor.js"; ?>" ></script>
 
-<form action="<?php echo BASE_URL."module/kertas/action.php?barang_id=$barang_id"; ?>" method="POST" enctype="multipart/form-data">
+<form action="<?php echo BASE_URL."module/pegawai/action.php?pegawai_id=$pegawai_id"; ?>" method="POST" enctype="multipart/form-data">
 
 <!--
 
@@ -93,13 +96,18 @@
                     -->
 
     <div class="element-form">
-            <label>ID Pemesan</label>
-            <span><input type="text" name="pg_id" value="<?php echo $p_id ?>" /></span>
+            <label>ID Pegawai</label>
+            <span><input type="text" name="pg_id" value="<?php echo $pegawai_id ?>" /></span>
     </div>
 
     <div class="element-form">
-            <label>Nama</label>
-            <span><input type="text" name="pg_nama" value="<?php echo $pnama?>" /></span>
+            <label>Nama Pegawai</label>
+            <span><input type="text" name="pg_nama" value="<?php echo $pegawai_nama ?>" /></span>
+    </div>
+
+    <div class="element-form">
+            <label>Tanggal Lahir</label>
+            <span><input type="text" name="pg_tgl_lahir" value="<?php echo $pegawai_tgllahir ?>" /></span>
     </div>
 
     <!--
@@ -110,23 +118,20 @@
     -->
 
     <div class="element-form">
-         
-		 <label>tanggal lahir</label>
-            <span><input type="text" name="pg_tgl_lahir" value="<?php echo $ptgl ?>" /></span>
+            <label>Alamat</label>
+            <span><input type="text" name="pg_alamat" value="<?php echo $pegawai_alamat ?>" /></span>
     </div>
 
     <div class="element-form">
-            <label>alamat</label>
-            <span><input type="text" name="pg_alamat" value="<?php echo $palamat ?>" /></span>
+            <label>No Telepon</label>
+            <span><input type="text" name="pg_notelp" value="<?php echo $pegawai_notelp ?>" /></span>
     </div>
-	<div class="element-form">
-            <label>no telepon</label>
-            <span><input type="text" name="pg_notelp" value="<?php echo $ptelp ?>" /></span>
-    </div>
+
     <div class="element-form">
-            <label>jabatan</label>
-            <span><input type="text" name="pg_jabatan" value="<?php echo $pjab ?>" /></span>
+            <label>Bagian</label>
+            <span><input type="text" name="pg_bagian" value="<?php echo $pegawai_bagian ?>" /></span>
     </div>
+    
     <!--
     <div class="element-form">
             <label>Gambar <?php echo $keterangan_gambar; ?> </label>
