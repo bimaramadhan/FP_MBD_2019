@@ -73,7 +73,34 @@ echo "</table>";
 
 //ini buat fungsi
 echo "<br><h2>Function</h2>";
-echo "<h3>1. zxczczxc </h3>";
+$query = mysqli_query($koneksi,"SELECT pt_id,dbo.hitung_pemakaian(pt_id) as jumlah_pemakaian from printer");
+
+    if(mysqli_num_rows($query) == 0){
+        echo "<h4>Maaf, tidak ada apapun dalam tabel pemesan</h4>";
+    }
+    else{
+
+        echo "<table class='table-list'>";
+
+        echo "<tr class='baris-title'>
+                <th class='kolom-nomor'>No</th>
+                <th class='kiri'>Id Printer</th>
+                <th class='kiri'>jumlah pemakaian</th>
+                
+            </tr>";
+
+            $no = 1;
+            while($row=mysqli_fetch_assoc($query)){
+
+                echo "<tr>
+                    <td class='kolom-nomor'>$no</td>
+                    <td class='kiri'>$row[pt_id]</td>
+                    <td class='kiri'>$row[jumlah_pemakaian]</td>
+                </tr>";
+
+            $no++;
+            }
+        echo "</table>";
 //isi ini
 echo "<h3>2. gfdfdfgf </h3>";
 //isi ini juga
